@@ -1,0 +1,30 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+@import '../../../../vendor/filament/support/resources/css/theme.css';
+
+.fi-sidebar {
+    @apply bg-espresso-900 border-r border-gold-500/10;
+}
+
+.fi-sidebar-header {
+    @apply border-b border-gold-500/10;
+}
+
+.fi-sidebar-item a {
+    @apply text-cream-300 hover:text-cream-50 hover:bg-espresso-700/50;
+}
+
+.fi-sidebar-item-active a {
+    @apply bg-gold-500/10 text-gold-400 border-l-2 border-gold-500;
+}
+
+.fi-topbar {
+    @apply bg-espresso-900 border-b border-gold-500/10;
+}
+
+.fi-btn {
+    @apply rounded-lg font-medium;
+}
+
+.fi-input {
+    @apply border-espresso-200 focus:border-gold-500 focus:ring-gold-500/20 rounded-lg;
+}
