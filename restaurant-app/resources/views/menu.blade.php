@@ -13,7 +13,7 @@
                 send() {
                     this.sending = true;
                     this.error = false;
-                    fetch('{{ route('menu.call-waiter') }}', {
+                    fetch('{{ route('menu.call-waiter', ['tenant' => tenant('id')]) }}', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
                         body: JSON.stringify({ table_id: {{ $table->id }} })

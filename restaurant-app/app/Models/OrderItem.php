@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToRestaurant;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OrderItem extends Model
 {
-    use HasFactory;
+    use BelongsToRestaurant, HasFactory;
 
     protected $fillable = [
+        'restaurant_id',
         'order_id', 'dish_id', 'quantity',
         'modifiers', 'status', 'notes', 'price',
         'started_at', 'prepared_at', 'cancelled_at', 'cancel_reason',

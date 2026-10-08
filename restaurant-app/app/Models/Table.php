@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToRestaurant;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -9,9 +11,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Table extends Model
 {
-    use HasFactory;
+    use BelongsToRestaurant, HasFactory;
 
     protected $fillable = [
+        'restaurant_id',
         'number', 'capacity', 'location', 'is_active', 'zone_id',
         'help_requested_at', 'alerted_abandoned', 'merged_into_id',
     ];

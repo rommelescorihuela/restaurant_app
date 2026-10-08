@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToRestaurant;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TableHistory extends Model
 {
-    use HasFactory;
+    use BelongsToRestaurant, HasFactory;
 
-    protected $fillable = ['table_id', 'waiter_id', 'order_id', 'action'];
+    protected $fillable = ['restaurant_id', 'table_id', 'waiter_id', 'order_id', 'action'];
 
     public function table(): BelongsTo
     {

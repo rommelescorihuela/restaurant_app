@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToRestaurant;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Incident extends Model
 {
-    use HasFactory;
+    use BelongsToRestaurant, HasFactory;
 
     protected $fillable = [
+        'restaurant_id',
         'table_id', 'waiter_id', 'order_id',
         'type', 'description', 'status',
         'resolved_by', 'resolved_at',

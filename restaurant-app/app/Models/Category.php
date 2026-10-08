@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToRestaurant;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,9 +12,9 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Category extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia;
+    use BelongsToRestaurant, HasFactory, InteractsWithMedia;
 
-    protected $fillable = ['name', 'slug', 'description', 'is_active'];
+    protected $fillable = ['restaurant_id', 'name', 'slug', 'description', 'is_active'];
 
     public function dishes(): HasMany
     {

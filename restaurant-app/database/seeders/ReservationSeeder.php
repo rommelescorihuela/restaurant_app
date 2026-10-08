@@ -32,17 +32,22 @@ class ReservationSeeder extends Seeder
             ['days_from_now' => 14, 'time' => '21:00', 'guest_count' => 5, 'table_index' => 9, 'status' => 'pending'],
         ];
 
-        foreach ($reservations as $r) {
-            $customer = $customers->random();
+        foreach ($reservations as $index => $r) {
+            $customer = $customers->values()[$index % $customers->count()];
             $table = $tables[$r['table_index']] ?? $tables->random();
+            $reservationDate = Carbon::today()->addDays($r['days_from_now'])->setTimeFromTimeString($r['time']);
 
-            Reservation::create([
-                'customer_id' => $customer->id,
-                'table_id' => $table->id,
-                'reservation_date' => Carbon::today()->addDays($r['days_from_now'])->setTimeFromTimeString($r['time']),
-                'guest_count' => $r['guest_count'],
-                'status' => $r['status'],
-            ]);
+            Reservation::firstOrCreate(
+                [
+                    'customer_id' => $customer->id,
+                    'table_id' => $table->id,
+                    'reservation_date' => $reservationDate,
+                ],
+                [
+                    'guest_count' => $r['guest_count'],
+                    'status' => $r['status'],
+                ]
+            );
         }
     }
 }

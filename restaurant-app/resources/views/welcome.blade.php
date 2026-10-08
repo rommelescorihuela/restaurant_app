@@ -35,7 +35,7 @@
                             Reserva tu Mesa
                             <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                         </a>
-                        <a href="/menu" class="inline-flex items-center gap-2 px-8 py-4 border border-cream-500/30 text-cream-200 hover:bg-cream-50/5 font-medium text-base rounded-full transition-all duration-300 hover:border-cream-500/50 hover:text-cream-50">
+                        <a href="{{ route('menu', ['tenant' => tenant('id')]) }}" class="inline-flex items-center gap-2 px-8 py-4 border border-cream-500/30 text-cream-200 hover:bg-cream-50/5 font-medium text-base rounded-full transition-all duration-300 hover:border-cream-500/50 hover:text-cream-50">
                             Ver Menú
                         </a>
                     </div>
@@ -141,7 +141,7 @@
             </div>
 
             <div class="text-center mt-12 entrance-d2">
-                <a href="/menu" class="group inline-flex items-center gap-2 px-8 py-4 bg-espresso-900 hover:bg-espresso-800 text-cream-50 font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
+                <a href="{{ route('menu', ['tenant' => tenant('id')]) }}" class="group inline-flex items-center gap-2 px-8 py-4 bg-espresso-900 hover:bg-espresso-800 text-cream-50 font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
                     Ver Menú Completo
                     <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </a>
@@ -179,7 +179,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('reservations.store') }}" class="mt-6 space-y-4">
+                        <form method="POST" action="{{ route('reservations.store', ['tenant' => tenant('id')]) }}" class="mt-6 space-y-4">
                             @csrf
                             <div class="grid grid-cols-2 gap-4">
                                 <div>

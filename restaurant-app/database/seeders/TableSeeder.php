@@ -25,7 +25,10 @@ class TableSeeder extends Seeder
         ];
 
         foreach ($tables as $table) {
-            Table::create($table);
+            Table::updateOrCreate(
+                ['number' => $table['number']],
+                $table
+            );
         }
     }
 }

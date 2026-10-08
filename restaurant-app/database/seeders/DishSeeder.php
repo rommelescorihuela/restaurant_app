@@ -56,13 +56,14 @@ class DishSeeder extends Seeder
             if (!$categoryId) continue;
 
             foreach ($items as $item) {
-                Dish::create([
-                    'category_id' => $categoryId,
-                    'name' => $item['name'],
-                    'description' => $item['description'],
-                    'price' => $item['price'],
-                    'is_available' => true,
-                ]);
+                Dish::updateOrCreate(
+                    ['category_id' => $categoryId, 'name' => $item['name']],
+                    [
+                        'description' => $item['description'],
+                        'price' => $item['price'],
+                        'is_available' => true,
+                    ]
+                );
             }
         }
     }

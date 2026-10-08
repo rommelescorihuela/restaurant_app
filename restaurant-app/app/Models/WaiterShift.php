@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\BelongsToRestaurant;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class WaiterShift extends Model
 {
-    use HasFactory;
+    use BelongsToRestaurant, HasFactory;
 
     protected $fillable = [
+        'restaurant_id',
         'waiter_id', 'started_at', 'ended_at',
         'is_on_break', 'break_started_at', 'status',
     ];
